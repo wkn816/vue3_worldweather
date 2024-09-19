@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="ここ" />
+    <HelloWorld msg="" />
     <MyText />
     <MyTitle />
     <MyForm @submit-form="getWeather" />
@@ -25,10 +25,10 @@ const results = reactive({
   conditionText: "",
   icon: ""
 })
-const getWeather = () => {
+const getWeather = (city) => {
   axios
     .get(
-      "https://api.weatherapi.com/v1/current.json?key=d93185177c9a41d4bb9111921241909&q=London&aqi=no"
+      `https://api.weatherapi.com/v1/current.json?key=d93185177c9a41d4bb9111921241909&q=${city}&aqi=no`
     )
     .then(res => {
             results.country = res.data.location.country,
