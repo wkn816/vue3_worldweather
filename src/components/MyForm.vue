@@ -1,12 +1,17 @@
 <template>
-  <form>
+  <form @submit.prevent="submitForm">
     <input type="text" v-model="city" placeholder="都市名を英語で入力" />
-    {{city}}
     <button type="submit">決定！</button>
   </form>
 </template>
 
 <script setup>
-import { ref } from "vue"
-const city = ref("")
+import { ref } from "vue";
+import { defineEmits } from 'vue';
+
+const city = ref("");
+const submitForm = () => {
+  emits("submit-form")
+}
+const emits = defineEmits(["submit-form"])
 </script>
