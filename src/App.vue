@@ -4,8 +4,7 @@
     <HelloWorld msg="ここ" />
     <MyText />
     <MyTitle />
-    <MyForm />
-    <button @click="getWeather">getWeatherのテスト</button>
+    <MyForm @submit-form="getWeather" />
   </div>
 </template>
 
