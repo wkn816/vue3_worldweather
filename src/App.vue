@@ -5,6 +5,7 @@
     <MyText />
     <MyTitle />
     <MyForm @submit-form="getWeather" />
+    <MyResults />
   </div>
 </template>
 
@@ -14,6 +15,8 @@ import HelloWorld from "./components/HelloWorld.vue";
 import MyText from "./components/MyText.vue";
 import MyTitle from "./components/MyTitle.vue";
 import MyForm from "./components/MyForm.vue";
+import MyResults from "./components/MyResults.vue";
+
 
 const getWeather = () => {
   axios
