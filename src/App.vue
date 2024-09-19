@@ -4,28 +4,25 @@
     <HelloWorld msg="ここ" />
     <MyText />
     <MyTitle />
-    <Form />
+    <MyForm />
+    <button @click="getWeather">getWeatherのテスト</button>
   </div>
 </template>
 
-<script>
+<script setup>
+import axios from "axios";
 import HelloWorld from "./components/HelloWorld.vue";
 import MyText from "./components/MyText.vue";
 import MyTitle from "./components/MyTitle.vue";
-import Form from "./components/Form.vue";
+import MyForm from "./components/MyForm.vue";
 
-
-
-
-export default {
-  name: "App",
-  components: {
-    HelloWorld,
-    MyText,
-    MyTitle,
-    Form
-  }
-};
+const getWeather = () => {
+  axios
+    .get(
+      "https://api.weatherapi.com/v1/current.json?key=d93185177c9a41d4bb9111921241909&q=London&aqi=no"
+    )
+    .then(res => console.log(res))
+}
 </script>
 
 <style>
