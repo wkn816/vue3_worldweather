@@ -4,7 +4,7 @@
     <HelloWorld msg="ここ" />
     <MyText />
     <MyTitle />
-    <Form />
+    <MyForm />
   </div>
 </template>
 
@@ -12,10 +12,7 @@
 import HelloWorld from "./components/HelloWorld.vue";
 import MyText from "./components/MyText.vue";
 import MyTitle from "./components/MyTitle.vue";
-import Form from "./components/Form.vue";
-
-
-
+import MyForm from "./components/MyForm.vue";
 
 export default {
   name: "App",
@@ -23,10 +20,11 @@ export default {
     HelloWorld,
     MyText,
     MyTitle,
-    Form
-  }
+    MyForm,
+  },
 };
 </script>
+https://api.weatherapi.com/v1/current.json?key=d93185177c9a41d4bb9111921241909&q=London&aqi=no
 
 <style>
 #app {
