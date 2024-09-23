@@ -1,5 +1,22 @@
 <template>
   <div>
+    <div class="menu-container">
+    <!-- アイコン (例としてクリックする部分) -->
+    <button @click="toggleMenu" class="menu-icon">
+      メニュー
+    </button>
+
+    <!-- メニュー -->
+    <div v-if="isMenuVisible" class="menu-popup">
+      <ul>
+        <li><a href="#">Spring Bootの構成</a></li>
+        <li><a href="#">DIについて</a></li>
+        <li><a href="#">HelloWorld</a></li>
+      </ul>
+    <button @click="closeMenu" class="close-button">閉じる</button>
+
+    </div>
+  </div>
     <!-- ボタンで各章にスクロール -->
     <button @click="scrollTo('#chapter-1')">第1章へ移動</button>
     <button @click="scrollTo('#chapter-2')">第2章へ移動</button>
@@ -7,7 +24,7 @@
 
     <!-- 各章のコンテンツ -->
     <div id="chapter-1" class="chapter">
-      <h2>第1章: はじめに</h2>
+      <h2>第1章: はじめに！</h2>
       <h2>Vue.jsの概要</h2>
       <p>
         Vue.js 3は、従来のVue.js
@@ -212,12 +229,23 @@
 import VueScrollTo from "vue-scrollto";
 
 export default {
+  data() {
+    return {
+      isMenuVisible: false, // メニューの開閉状態を管理
+    };
+  },
   methods: {
     // vue-scrollto を使ってセクションにスクロール
     scrollTo(target) {
       VueScrollTo.scrollTo(target, 500, {
         easing: "ease-in-out",
       });
+    },
+    toggleMenu() {
+      this.isMenuVisible = !this.isMenuVisible;
+    },
+    closeMenu() {
+      this.isMenuVisible = false;
     },
   },
 };
@@ -231,4 +259,58 @@ export default {
 button {
   margin: 10px;
 }
+
+.test {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #008080;
+  border-radius: 50%;
+}
+
+.menu-container {
+  position: relative;
+  display: inline-block;
+}
+
+.menu-icon {
+  cursor: pointer;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.menu-popup {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  z-index: 100;
+  width: 150px;
+}
+
+.menu-popup ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-popup li {
+  padding: 10px;
+}
+
+.menu-popup li a {
+  text-decoration: none;
+  color: black;
+}
+
+.menu-popup li:hover {
+  background-color: #f1f1f1;
+}
+
 </style>
