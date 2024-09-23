@@ -1,85 +1,118 @@
 <template>
-  <!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vue.jsの概要と基本的な機能</title>
-</head>
-<body>
-    <div class="test">
-      <v-icon class="arrow">mdi-format-list-bulleted</v-icon>
+  <div>
+    <div class="menu-btn">
+      <v-icon @click="toggleMenu" class="arrow">mdi-format-list-bulleted</v-icon>
     </div>
-  <button @click="scrollToBottom">ここから移動する</button>
-
-
-    <h1>Vue.jsの概要と基本的な機能</h1>
-
-    <h2>Vue.jsの概要</h2>
-
-    <p>Vue.jsは、2014年にエヴァン・ユー（Evan You）によって開発された、軽量で柔軟なフロントエンドJavaScriptフレームワークです。React.jsやAngularと同様に、動的なユーザーインターフェースやシングルページアプリケーション（SPA）を効率的に構築できるツールです。しかし、Vue.jsは学習曲線がなだらかで、開発者に優しい設計であることから、特に小中規模のプロジェクトやスタートアップで人気を博しています。</p>
-
-    <p>Vue.jsの最も大きな特徴は、そのシンプルさと拡張性です。最初は単にビュー層だけを扱うライブラリとして導入し、プロジェクトが成長するに従って、公式ライブラリやプラグインを利用して、機能を追加していくことができます。Vuex（状態管理）、Vue Router（ルーティング）、そしてコンポーネントを使った設計が可能で、柔軟にアプリケーション全体を組み立てられます。</p>
-
-    <h2>Vue.jsの基本的な機能</h2>
-
-    <h3>1. リアクティブデータバインディング</h3>
-    <p>Vue.jsのリアクティブシステムは、データとビューが常に同期する仕組みを提供しています。これは、従来のDOM操作の煩雑さを取り除き、データが変われば自動的にビューが更新される「双方向データバインディング」を実現しています。ユーザーの操作によるデータの変更もリアルタイムに反映され、アプリケーションの動作が自然でスムーズになります。</p>
-
-    <h3>2. コンポーネントベースのアーキテクチャ</h3>
-    <p>Vue.jsは、UIを小さく再利用可能なコンポーネントとして分割することで、開発効率と保守性を高めています。各コンポーネントは独立しており、それぞれがHTMLテンプレート、JavaScriptのロジック、そしてスタイルを持つことができます。これにより、大規模なアプリケーションでもコードが整理され、再利用性が高くなります。コンポーネント同士のやり取りは、プロパティやイベントを通じて行われ、親子関係でデータを受け渡します。</p>
-
-    <h3>3. 仮想DOM</h3>
-    <p>Vue.jsは、仮想DOM（Virtual DOM）を使用して効率的なレンダリングを実現しています。仮想DOMとは、実際のDOMを直接操作するのではなく、一時的にメモリ上にDOMのコピーを作成し、変更が必要な部分だけを実際のDOMに反映する仕組みです。これにより、パフォーマンスが向上し、大量のデータを扱うアプリケーションでもスムーズに動作します。</p>
-
-    <h3>4. 柔軟なエコシステム</h3>
-    <p>Vue.jsは、そのエコシステムの柔軟性も大きな特徴です。シンプルなプロジェクトではVue.js単体でビュー層を管理できますが、プロジェクトの規模が大きくなるにつれて、公式ライブラリを導入することで、機能を拡張することができます。例えば、SPA構築にはVue Routerを、状態管理にはVuexを使用できます。これらのツールは、Vue.jsの思想に基づいて設計されており、シームレスに統合できるため、開発者は最小限の設定で強力な機能を利用できます。</p>
-
-    <h2>Vue.js 3 の主な機能</h2>
-
-    <p>Vue.js 3は、従来のVue.js 2に比べて大幅に進化しており、特にパフォーマンスや拡張性、開発者体験において多くの改善がなされています。以下は、その主な新機能です。</p>
-
-    <h3>1. Composition API</h3>
-    <p>Vue.js 3では、従来のオプションAPIに加えて、Composition APIが導入されました。Composition APIは、コンポーネントのロジックをより明確に整理し、複数の機能を組み合わせて再利用しやすくするための新しい方法です。これにより、状態やメソッドを「setup」関数内にまとめ、ロジックの可読性が向上します。特に、大規模なコンポーネントや複雑な状態管理が必要な場合に有用です。</p>
-
-    <h3>2. フラグメント</h3>
-    <p>Vue.js 3では、「フラグメント」をサポートしています。Vue.js 2では、1つのコンポーネントで複数のルート要素を返すことができませんでしたが、Vue.js 3ではこれが可能になりました。これにより、余計なHTMLタグを追加することなく、複数の要素をグループ化して返すことができ、コードがより簡潔になります。</p>
-
-    <h3>3. Teleport</h3>
-    <p>Teleportは、コンポーネントのレンダリング先を親コンポーネントのDOM外に移動させる機能です。例えば、モーダルウィンドウやツールチップのように、視覚的にはアプリケーションの一部でありながら、HTMLの構造的には異なる場所に配置したい要素を、柔軟にレンダリングできるようになります。これにより、UIの設計がより直感的で柔軟になります。</p>
-
-    <h3>4. Improved TypeScriptサポート</h3>
-    <p>Vue.js 3はTypeScriptとの統合が大幅に改善されました。Vue 2でもTypeScriptを利用することは可能でしたが、Vue 3ではフレームワーク自体がTypeScriptで記述されているため、型安全性や型推論が強化されています。これにより、特に大規模なプロジェクトやチーム開発でのメリットが大きく、コードの保守性やバグの防止にも寄与します。</p>
-
-    <h3>5. より小さなバンドルサイズ</h3>
-    <p>Vue.js 3は、パフォーマンス向上のためにバンドルサイズを最適化しています。Tree-shakingと呼ばれる手法を使って、未使用のコードを削除することで、アプリケーションの初期ロード時のデータ量が減少します。これにより、モバイルデバイスやネットワーク接続が遅い環境でも、より高速にアプリケーションを読み込むことができます。</p>
-
-    <h3>6. その他の改善点</h3>
-    <p>さらに、Vue.js 3ではいくつかの新しい最適化技術が導入され、パフォーマンスが全体的に向上しています。例えば、レンダリングプロセスの見直しにより、仮想DOMのパフォーマンスが大幅に向上し、大規模なアプリケーションでも高速に動作します。また、カスタムディレクティブやプロパティのデフォルト値に関する新しいAPIも追加されており、開発者にとって使いやすい環境が整えられています。</p>
-
-    <h2 id="#bottom">まとめ</h2>
-    <p>Vue.js 3は、シンプルさと柔軟性を維持しつつ、パフォーマンスの向上や新しいAPI、より良い開発体験を提供しています。特に、Composition APIやTeleport、仮想DOMの最適化により、複雑なアプリケーションの開発がより容易になりました。Vue.jsの拡張性と柔軟なエコシステムを活かして、小規模から大規模なプロジェクトまで、さまざまな用途に対応できる優れたフレームワークです。</p>
-
-</body>
-</html>
-
-
-
+    <transition name="fade">
+      <ul v-if="showMenu" class="menu">
+        <v-icon @click="toggleMenu" class= "close-btn">mdi-close</v-icon>
+        <li>
+          <span class="line"></span>
+          <span class="marker"></span>
+          Spring Bootの構成
+        </li>
+        <li>
+          <span class="marker"></span>
+          DIについて
+        </li>
+        <li>
+          <span class="marker"></span>
+          HelloWorld
+        </li>
+      </ul>
+    </transition>
+  </div>
 </template>
 
 <script>
-
 export default {
-  name: "MyTest",
-  mounted() {
-    this.scrollToBottom('#bottom', {
-      offset: -100,
-      duration: 500,
-      easing: 'ease'
-    });
-  }
-}
+  data() {
+    return {
+      showMenu: false,
+    };
+  },
+  methods: {
+    toggleMenu() {
+      this.showMenu = !this.showMenu;
+    },
+    closeMenu() {
+      this.showMenu = false;
+    },
+  },
+};
 </script>
 
 <style>
+.arrow {
+  transition: all .3s;
+  margin-right: 5px;
+}
+a:hover .arrow {
+  transform: translateX(-3px);
+}
+.close-btn{
+  color: black;
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  transform: translateY(-50%);
+}
+.menu-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  /* その他のスタイル */
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f1f1;
+  border-radius: 50%;
+}
+.menu {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  list-style: none;
+
+}
+.menu li {
+  padding: 10px 0;
+  top: 10px;
+}
+
+.menu li::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 100%;
+  background-color: rgb(177, 33, 33); /* 縦線の色 */
+  margin-right: 10px; /* 縦線とテキストの距離 */
+}
+.marker {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  margin-right: 5px;
+}
+
+.menu li:hover .marker {
+  background-color: orange;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
 </style>
