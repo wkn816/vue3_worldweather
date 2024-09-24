@@ -5,18 +5,10 @@
     </div>
     <transition name="fade">
       <ul v-if="showMenu" class="menu">
-        <v-icon @click="toggleMenu" class= "close-btn">mdi-close</v-icon>
-        <li>
+          <v-icon @click="toggleMenu" class= "close-btn">mdi-close</v-icon>
+        <li v-for="(title, index) in testtitles" :key="index" @click="$emit('scrollToChapter', index)">
           <span class="marker"></span>
-          Spring Bootの構成!!!!!!
-        </li>
-        <li>
-          <span class="marker"></span>
-          DIについて
-        </li>
-        <li>
-          <span class="marker"></span>
-          HelloWorld
+          {{ title }}
         </li>
       </ul>
     </transition>
@@ -37,6 +29,12 @@ export default {
       this.list = !this.list;
     },
   },
+  props: {
+    testtitles: {
+      type: Array,
+      required: true
+    }
+  }
 };
 </script>
 
@@ -50,8 +48,11 @@ a:hover .arrow {
 }
 .close-btn{
   color: black;
-  left: 150px;
+  position: absolute; /* 要素を絶対配置にする */
+  top: 5px; /* 上端を親要素のトップに合わせる */
+  right: 10px; /* 右端を親要素の右端に合わせる */
 }
+
 .menu-btn {
   position: fixed;
   top: 20px;
@@ -74,10 +75,10 @@ a:hover .arrow {
   border: 1px solid #ccc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   list-style: none;
+  height: auto;
 }
 .menu li {
-  padding: 10px 0;
-  top: 10px;
+  padding: 15px 0;
 
 }
 .marker {
