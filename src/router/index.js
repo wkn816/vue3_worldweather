@@ -1,5 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import App from '../App.vue';
+import MyTitle from '../components/MyTitle.vue';
+import MyTest from '../components/MyTest.vue';
+
+
 
 // ルーティング情報
 
@@ -10,10 +14,15 @@ const routes = [
     component: App,
   },
   {
+    path: '/MyTitle',
+    name: 'MyTitle',
+    component: MyTitle,
+  },
+  {
     path: '/MyTest',
     name: 'MyTest',
-    component: () => import('../components/MyTest.vue')
-  }
+    component: MyTest,
+  },
 ];
 
 const router = createRouter({
