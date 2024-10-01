@@ -5,11 +5,17 @@
     </div>
     <transition name="fade">
       <ul v-if="showMenu" class="menu">
-          <v-icon @click="toggleMenu" class= "close-btn">mdi-close</v-icon>
-        <li v-for="(title, index) in testtitles" :key="index" @click="$emit('scrollToChapter', index)">
+        <v-icon @click="toggleMenu" class="close-btn">mdi-close</v-icon>
+        <li
+          v-for="(title, index) in testtitles"
+          :key="index"
+          @click="$emit('scrollToChapter', index)"
+        >
           <span class="marker"></span>
-          {{ title }}
+
+          "sssssssskk"
         </li>
+        <li>aaaaaa</li>
       </ul>
     </transition>
   </div>
@@ -20,14 +26,15 @@ export default {
   data() {
     return {
       showMenu: false,
-      list: true,
+      list: true
     };
   },
   methods: {
     toggleMenu() {
       this.showMenu = !this.showMenu;
       this.list = !this.list;
-    },
+      console.log("aaa");
+    }
   },
   props: {
     testtitles: {
@@ -40,13 +47,13 @@ export default {
 
 <style>
 .arrow {
-  transition: all .3s;
+  transition: all 0.3s;
   margin-right: 5px;
 }
 a:hover .arrow {
   transform: translateX(-3px);
 }
-.close-btn{
+.close-btn {
   color: black;
   position: absolute; /* 要素を絶対配置にする */
   top: 5px; /* 上端を親要素のトップに合わせる */
@@ -79,7 +86,6 @@ a:hover .arrow {
 }
 .menu li {
   padding: 15px 0;
-
 }
 .marker {
   display: inline-block;
@@ -101,5 +107,4 @@ a:hover .arrow {
 .fade-leave-to {
   opacity: 0;
 }
-
 </style>
