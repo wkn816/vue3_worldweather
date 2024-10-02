@@ -12,8 +12,7 @@
           @click="$emit('scrollToChapter', index)"
         >
           <span class="marker"></span>
-
-          "sssssssskk"
+          "テスト"
         </li>
         <li>aaaaaa</li>
       </ul>
